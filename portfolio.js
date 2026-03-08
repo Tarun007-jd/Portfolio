@@ -9,17 +9,50 @@ function setActiveById(id) {
   });
 }
 
-// Observe sections entering viewport
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      setActiveById(entry.target.id);
-      history.replaceState(null, '', `#${entry.target.id}`);
+// Handle menu toggle for mobile
+const menuIcon = document.querySelector('#menu-icon');
+const navbar = document.querySelector('.navbar');
+
+if (menuIcon && navbar) {
+  menuIcon.addEventListener('click', () => {
+    menuIcon.classList.toggle('bx-x');
+    navbar.classList.toggle('active');
+  });
+}
+
+// Observe sections via scroll for robust scroll spy
+window.addEventListener('scroll', () => {
+  let currentId = '';
+  const scrollY = window.scrollY;
+
+  sections.forEach(sec => {
+    const top = sec.offsetTop;
+    const height = sec.offsetHeight;
+    if (scrollY >= top - window.innerHeight / 3) {
+      currentId = sec.getAttribute('id');
     }
   });
-}, { root: null, rootMargin: '-30% 0px -30% 0px', threshold: [0, 0.25, 0.5] });
 
-sections.forEach(sec => observer.observe(sec));
+  // Handle the absolute bottom of the page
+  if (window.innerHeight + scrollY >= document.body.offsetHeight - 50) {
+    currentId = sections[sections.length - 1].getAttribute('id');
+  }
+
+  if (currentId) {
+    setActiveById(currentId);
+  }
+
+  // Header sticky class and hide menu on scroll
+  const header = document.querySelector('.header');
+  if (header) {
+    header.classList.toggle('scrolled', scrollY > 50);
+  }
+
+  if (menuIcon && navbar) {
+    menuIcon.classList.remove('bx-x');
+    navbar.classList.remove('active');
+  }
+});
 
 // Handle clicks and hash navigation
 navLinks.forEach(link => {
@@ -54,7 +87,7 @@ document.querySelectorAll('.heading.reveal-init').forEach(heading => {
 window.addEventListener('load', () => {
   const hash = location.hash.replace('#', '') || 'home';
   setActiveById(hash);
-  
+
   // Trigger reveal for visible headings on load
   document.querySelectorAll('.heading.reveal-init').forEach(heading => {
     const rect = heading.getBoundingClientRect();
@@ -70,7 +103,7 @@ window.addEventListener('load', () => {
   const target = document.querySelector('.text-animation');
   if (!target) return;
 
-  const roles = ["Full Stack Developer","Problem Solver", "Programmer", "Web Developer", "Mobile App Developer"];
+  const roles = ["Full Stack Developer", "Problem Solver", "Programmer", "Web Developer", "Mobile App Developer"];
   let r = 0, i = 0, del = false;
 
   function tick() {
@@ -116,22 +149,22 @@ window.addEventListener('load', () => {
       z: Math.random() * 0.8 + 0.2,
       r: Math.random() * 1.3 + 0.2,
       tw: Math.random() * 1000,
-      c: `rgba(${180 + Math.floor(Math.random()*75)}, ${200 + Math.floor(Math.random()*55)}, 255, ${Math.random()*0.8+0.2})`
+      c: `rgba(${180 + Math.floor(Math.random() * 75)}, ${200 + Math.floor(Math.random() * 55)}, 255, ${Math.random() * 0.8 + 0.2})`
     }));
   }
 
   function draw() {
     ctx.clearRect(0, 0, w, h);
     // subtle nebula glow
-    const grad = ctx.createRadialGradient(w*0.5, h*0.8, 0, w*0.5, h*0.8, Math.max(w,h));
+    const grad = ctx.createRadialGradient(w * 0.5, h * 0.8, 0, w * 0.5, h * 0.8, Math.max(w, h));
     grad.addColorStop(0, 'rgba(102,126,234,0.08)');
     grad.addColorStop(1, 'rgba(0,0,0,0)');
     ctx.fillStyle = grad;
     ctx.fillRect(0, 0, w, h);
 
     stars.forEach(s => {
-      const parallaxX = (mouseX - w/2) * 0.002 * s.z;
-      const parallaxY = (mouseY - h/2) * 0.002 * s.z;
+      const parallaxX = (mouseX - w / 2) * 0.002 * s.z;
+      const parallaxY = (mouseY - h / 2) * 0.002 * s.z;
       const x = s.x - parallaxX;
       const y = s.y - parallaxY;
 
@@ -222,10 +255,10 @@ document.addEventListener('click', (e) => {
 window.addEventListener('DOMContentLoaded', () => {
   const meta = [
     { title: 'Universal Human Values (6-day Online Students\' Workshop)', issued_by: 'All India Council for Technical Education (AICTE)', year: '2025', match: ['AICTE'] },
-    { title: 'Prompt Engineering for Everyone', issued_by: 'Cognitive Class', year: '2025', match: ['cognitive prompt','Cognitive'] },
+    { title: 'Prompt Engineering for Everyone', issued_by: 'Cognitive Class', year: '2025', match: ['cognitive prompt', 'Cognitive'] },
     { title: 'Prompt Engineering', issued_by: 'Infosys Springboard', year: '2025', match: ['Info prompt'] },
     { title: 'Artificial Intelligence Foundation Certification', issued_by: 'Infosys Springboard', year: '2025', match: ['Info AI foundation'] },
-    { title: 'Python (Basic)', issued_by: 'HackerRank', year: '2025', match: ['Hackrank python basic','HackerRank'] },
+    { title: 'Python (Basic)', issued_by: 'HackerRank', year: '2025', match: ['Hackrank python basic', 'HackerRank'] },
     { title: 'Networking and Web Technology', issued_by: 'Infosys Springboard', year: '2025', match: ['Info web tech'] },
     { title: 'Principles of Generative AI Certification', issued_by: 'Infosys Springboard', year: '2025', match: ['Info gen AI'] },
     { title: 'Applied Generative AI Certification', issued_by: 'Infosys Springboard', year: '2025', match: ['Info Applied AI'] },
@@ -236,7 +269,7 @@ window.addEventListener('DOMContentLoaded', () => {
     { title: 'Python Coder', issued_by: 'Kaggle', year: '2025', match: ['Kaggle Python Coder'] },
     { title: 'Basics of Python', issued_by: 'UniAthena (in partnership with Cambridge International Qualifications, UK)', year: '2025', match: ['Uniathena Basics Python'] },
     { title: 'Understanding Incubation and Entrepreneurship', issued_by: 'NPTEL (Indian Institute of Technology Bombay)', year: '2025', match: ['NPTEL 2'] },
-    { title: 'Python for Data Science', issued_by: 'Karpagam Academy of Higher Education & GeeksforGeeks Campus Body - KAHE', year: '2025', match: ['Python_Data_Science','Workshop'] },
+    { title: 'Python for Data Science', issued_by: 'Karpagam Academy of Higher Education & GeeksforGeeks Campus Body - KAHE', year: '2025', match: ['Python_Data_Science', 'Workshop'] },
     { title: 'Generative AI in Practice', issued_by: 'Sololearn', year: '2025', match: ['Sololearn Generative AI in Practice'] },
   ];
 
@@ -257,3 +290,54 @@ window.addEventListener('DOMContentLoaded', () => {
     }
   });
 });
+
+// Intercept Contact Form Submission to prevent redirect
+const contactForm = document.getElementById('contactForm');
+const successMessage = document.getElementById('successMessage');
+const submitBtn = document.getElementById('submitBtn');
+
+if (contactForm) {
+  contactForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (!contactForm.checkValidity()) {
+      contactForm.reportValidity();
+      return;
+    }
+
+    // UI Loading state
+    const originalText = submitBtn.textContent;
+    submitBtn.textContent = 'Sending...';
+    submitBtn.style.opacity = '0.7';
+    submitBtn.disabled = true;
+
+    const formData = new FormData(contactForm);
+    const actionUrl = contactForm.getAttribute('action');
+
+    fetch(actionUrl, {
+      method: 'POST',
+      body: formData,
+      mode: 'no-cors' // Google Apps Script requires this for cross-origin silently
+    })
+      .then(() => {
+        // Success!
+        contactForm.style.display = 'none';
+        successMessage.style.display = 'block';
+        contactForm.reset();
+      })
+      .catch(error => {
+        console.error('Error!', error.message);
+        alert("Oops! There was a problem submitting your form.");
+      })
+      .finally(() => {
+        submitBtn.textContent = originalText;
+        submitBtn.style.opacity = '1';
+        submitBtn.disabled = false;
+      });
+  });
+}
+
+// Function to text success message and show form again
+window.resetForm = function () {
+  successMessage.style.display = 'none';
+  contactForm.style.display = 'block';
+};
