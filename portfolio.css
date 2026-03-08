@@ -44,7 +44,7 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background: 
+    background:
         radial-gradient(circle at 20% 50%, rgba(102, 126, 234, 0.1) 0%, transparent 50%),
         radial-gradient(circle at 80% 80%, rgba(0, 217, 255, 0.1) 0%, transparent 50%);
     pointer-events: none;
@@ -66,7 +66,8 @@ section {
     z-index: 0;
 }
 
-.home-content, .home-img {
+.home-content,
+.home-img {
     position: relative;
     z-index: 1;
 }
@@ -141,6 +142,13 @@ section {
 .navbar a:hover,
 .navbar a.active {
     color: var(--main-color);
+}
+
+#menu-icon {
+    font-size: 3.6rem;
+    color: var(--text-color);
+    display: none;
+    cursor: pointer;
 }
 
 .header-actions {
@@ -264,20 +272,21 @@ section {
 }
 
 .view-all-btn {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
+    background: linear-gradient(135deg, var(--main-color), var(--accent-color));
+    color: var(--bg-color);
     padding: 12px 40px;
     border-radius: 25px;
-    font-size: 1rem;
+    font-size: 1.4rem;
+    font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
     border: none;
-    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+    box-shadow: 0 4px 15px rgba(0, 217, 255, 0.4);
 }
 
 .view-all-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+    box-shadow: 0 6px 20px rgba(0, 217, 255, 0.6);
 }
 
 /* Responsive Design */
@@ -286,7 +295,7 @@ section {
         grid-template-columns: 1fr;
         gap: 20px;
     }
-    
+
     .certificate-img {
         height: 180px;
     }

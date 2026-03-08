@@ -9,20 +9,48 @@
 @media (max-width: 991px) {
     .header {
         padding: 2rem 5%;
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr auto auto;
+        justify-content: space-between;
         gap: 2rem;
     }
 
     .logo {
-        justify-self: center;
+        justify-self: start;
+    }
+
+    #menu-icon {
+        display: block;
     }
 
     .navbar {
-        justify-self: center;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        padding: 1rem 3%;
+        background: rgba(10, 14, 26, 0.95);
+        backdrop-filter: blur(10px);
+        border-top: 1px solid rgba(0, 217, 255, 0.1);
+        border-bottom: 1px solid rgba(0, 217, 255, 0.1);
+        display: none;
+        flex-direction: column;
+        text-align: center;
+        transition: 0.3s ease;
+    }
+
+    .navbar.active {
+        display: flex;
+    }
+
+    .navbar a {
+        display: block;
+        padding: 1rem;
+        font-size: 2rem;
+        margin: 0.5rem 0;
     }
 
     .header-actions {
-        justify-self: center;
+        display: none;
     }
 
     section {
@@ -77,11 +105,6 @@
 }
 
 @media (max-width: 768px) {
-    .navbar {
-        flex-direction: column;
-        gap: 1.5rem;
-    }
-
     .heading {
         font-size: 3.5rem;
     }
@@ -134,7 +157,7 @@
         grid-template-columns: 1fr;
         gap: 1.6rem;
     }
-    
+
     .edu-card {
         padding: 1.9rem;
     }
@@ -176,6 +199,7 @@
 
 /* PRINT STYLES */
 @media print {
+
     .header,
     .social-media,
     .btn,
