@@ -19,7 +19,7 @@ export default function Skills() {
   const [ref, visible] = useReveal()
 
   return (
-    <section id="skills" className="relative px-6 lg:px-[9%] py-20 md:py-24 bg-[#0a0d1a]">
+    <section id="skills" className="relative px-6 lg:px-12 py-20 md:py-28 bg-[#0a0d1a]">
       <div className="section-divider" />
 
       <motion.div
@@ -27,11 +27,15 @@ export default function Skills() {
         variants={container}
         initial="hidden"
         animate={visible ? 'show' : 'hidden'}
-        className="relative z-10 max-w-5xl mx-auto"
+        className="relative z-10 max-w-6xl mx-auto"
       >
-        <motion.h2 variants={item} className="text-[2.4rem] md:text-[3.2rem] font-outfit font-black mb-12 tracking-tight">
+        <motion.h2 variants={item} className="text-3xl md:text-4xl font-outfit font-black mb-3 tracking-tight">
           My <span className="gradient-text-cyan">Skills</span>
         </motion.h2>
+
+        <motion.p variants={item} className="text-base md:text-lg text-white/60 mb-12">
+          A comprehensive set of technologies and tools I use daily for modern web development.
+        </motion.p>
 
         {/* Skill Categories */}
         <motion.div variants={container} className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10">

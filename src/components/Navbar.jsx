@@ -38,22 +38,22 @@ export default function Navbar() {
     <header
       className={`fixed top-0 left-0 w-full z-[100] transition-all duration-300 ${
         scrolled
-          ? 'bg-[#050810]/88 backdrop-blur-md border-b border-white/6'
+          ? 'bg-[#050810]/92 backdrop-blur-md border-b border-white/8'
           : 'bg-transparent backdrop-blur-sm border-b border-white/4'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 lg:px-[9%] py-3 flex items-center justify-between gap-4">
+      <div className="max-w-7xl mx-auto px-6 lg:px-12 py-4 flex items-center justify-between gap-4">
         {/* Logo */}
         <a
           href="#home"
           onClick={e => { e.preventDefault(); handleNavClick('#home') }}
-          className="font-outfit font-black text-[1.25rem] tracking-tight shrink-0 text-white hover:brightness-110 transition-all duration-200"
+          className="font-outfit font-black text-[1.3rem] tracking-tight shrink-0 text-white hover:brightness-110 transition-all duration-200"
         >
-          Tarun Dharsan R J
+          Tarun
         </a>
 
         {/* Desktop Nav */}
-        <nav className="hidden lg:flex items-center gap-2">
+        <nav className="hidden lg:flex items-center gap-1">
           {navItems.map(item => {
             const isActive = activeId === item.href.slice(1)
             return (
@@ -61,15 +61,15 @@ export default function Navbar() {
                 key={item.href}
                 href={item.href}
                 onClick={e => { e.preventDefault(); handleNavClick(item.href) }}
-                className={`relative px-3 py-2 text-[1rem] font-medium rounded-md transition-colors duration-200 ${
-                  isActive ? 'text-cyan-300' : 'text-white/60 hover:text-cyan-300 hover:bg-white/3'
+                className={`relative px-3 py-2 text-sm font-semibold rounded-md transition-colors duration-200 ${
+                  isActive ? 'text-cyan-300' : 'text-white/60 hover:text-cyan-300 hover:bg-white/4'
                 }`}
               >
                 {item.label}
                 {isActive && (
                   <motion.span
                     layoutId="nav-indicator"
-                    className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-[40%] h-[2px] rounded-full bg-cyan-300"
+                    className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-cyan-300"
                     transition={{ type: 'spring', stiffness: 380, damping: 35 }}
                   />
                 )}
@@ -83,9 +83,9 @@ export default function Navbar() {
           href={CV_URL}
           target="_blank"
           rel="noopener noreferrer"
-          className="hidden lg:inline-flex items-center gap-2 px-4 py-1.5 text-[0.95rem] font-semibold text-cyan-300 border border-white/8 rounded-md backdrop-blur-sm hover:bg-white/6 hover:text-white transition-all duration-200 shrink-0"
+          className="hidden lg:inline-flex items-center gap-2 px-4 py-1.5 text-sm font-semibold text-cyan-300 border border-white/10 rounded-md backdrop-blur-sm hover:bg-white/6 transition-all duration-200 shrink-0"
         >
-          Download CV
+          CV
         </a>
 
         {/* Mobile hamburger */}
@@ -95,7 +95,7 @@ export default function Navbar() {
           aria-label="Toggle menu"
           aria-expanded={menuOpen}
         >
-          <i className={`bx text-[1.6rem] ${menuOpen ? 'bx-x' : 'bx-menu'}`} />
+          <i className={`bx text-lg ${menuOpen ? 'bx-x' : 'bx-menu'}`} />
         </button>
       </div>
 
@@ -106,8 +106,8 @@ export default function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
-            className="lg:hidden overflow-hidden bg-[#050810]/96 backdrop-blur-2xl border-t border-cyan-500/10"
+            transition={{ duration: 0.2, ease: [0.4, 0, 0.2, 1] }}
+            className="lg:hidden overflow-hidden bg-[#050810]/96 backdrop-blur-md border-t border-white/8"
           >
             <div className="max-w-7xl mx-auto px-6 py-3 flex flex-col gap-1">
               {navItems.map((item, i) => (
@@ -118,10 +118,10 @@ export default function Navbar() {
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: i * 0.05 }}
-                  className={`px-4 py-3 text-[1.6rem] font-medium rounded-lg transition-all duration-200 ${
+                  className={`px-4 py-2.5 text-sm font-medium rounded-md transition-all duration-200 ${
                     activeId === item.href.slice(1)
-                      ? 'text-cyan-400 bg-cyan-400/8'
-                      : 'text-white/65 hover:text-cyan-400 hover:bg-cyan-400/6'
+                      ? 'text-cyan-300 bg-white/6'
+                      : 'text-white/65 hover:text-cyan-300 hover:bg-white/4'
                   }`}
                 >
                   {item.label}
@@ -131,7 +131,7 @@ export default function Navbar() {
                 href={CV_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-2 px-4 py-3 text-[1.55rem] font-semibold text-cyan-400 border border-cyan-400/30 rounded-lg text-center hover:bg-cyan-400 hover:text-[#050810] transition-all duration-200"
+                className="mt-2 px-4 py-2.5 text-sm font-semibold text-cyan-300 border border-white/10 rounded-md text-center hover:bg-white/6 transition-all duration-200"
               >
                 Download CV
               </a>

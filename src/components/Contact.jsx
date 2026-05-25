@@ -41,7 +41,7 @@ export default function Contact() {
   }
 
   return (
-    <section id="contact" className="relative px-6 lg:px-[9%] py-20 md:py-24 bg-[#050810]">
+    <section id="contact" className="relative px-6 lg:px-12 py-20 md:py-28 bg-[#050810]">
       <div className="section-divider" />
 
       <motion.div
@@ -51,16 +51,16 @@ export default function Contact() {
         animate={visible ? 'show' : 'hidden'}
         className="relative z-10 max-w-2xl mx-auto"
       >
-        <motion.h2 variants={fadeUp} className="text-[2.4rem] md:text-[3.2rem] font-outfit font-black text-center mb-3 tracking-tight">
+        <motion.h2 variants={fadeUp} className="text-3xl md:text-4xl font-outfit font-black mb-3 tracking-tight">
           Get In <span className="gradient-text-cyan">Touch</span>
         </motion.h2>
 
-        <motion.p variants={fadeUp} className="text-[1.05rem] text-white/60 text-center mb-8">
-          Have a project or collaboration idea? I'd love to hear from you.
+        <motion.p variants={fadeUp} className="text-base md:text-lg text-white/60 mb-8">
+          Have a project or collaboration idea? Let's work together.
         </motion.p>
 
         {/* Accent line */}
-        <motion.div variants={fadeUp} className="w-16 h-[2px] bg-gradient-to-r from-cyan-400 to-purple-500 rounded-full mx-auto mb-10" />
+        <motion.div variants={fadeUp} className="w-12 h-[2px] bg-gradient-to-r from-cyan-300 to-purple-400 rounded-full mb-10" />
 
         <AnimatePresence mode="wait">
           {!success ? (
@@ -79,12 +79,12 @@ export default function Contact() {
               <input type="hidden" name="sheetId" value={SHEET_ID} />
               <input type="hidden" name="sheetName" value="Sheet1" />
 
-              <motion.div variants={fadeUp} className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4 mb-4">
+              <motion.div variants={fadeUp} className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-3">
                 <input type="text" name="name" placeholder="Full Name" required aria-label="Full Name" className={inputClass} />
                 <input type="email" name="email" placeholder="Email Address" required aria-label="Email Address" className={inputClass} />
               </motion.div>
 
-              <motion.div variants={fadeUp} className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4 mb-4">
+              <motion.div variants={fadeUp} className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-3">
                 <input type="tel" name="phone" placeholder="Mobile Number" aria-label="Mobile Number" pattern="[0-9]{10}" title="Enter 10 digit number" className={inputClass} />
                 <input type="text" name="subject" placeholder="Email Subject" required aria-label="Email Subject" className={inputClass} />
               </motion.div>
@@ -92,7 +92,7 @@ export default function Contact() {
               <motion.div variants={fadeUp} className="mb-6">
                 <textarea
                   name="message"
-                  rows="6"
+                  rows="5"
                   placeholder="Your Message"
                   required
                   aria-label="Your Message"
@@ -104,26 +104,18 @@ export default function Contact() {
                 <motion.button
                   type="submit"
                   disabled={sending}
-                  whileHover={!sending ? { y: -3 } : {}}
+                  whileHover={!sending ? { y: -2 } : {}}
                   whileTap={!sending ? { scale: 0.98 } : {}}
-                  className="px-8 py-3 text-[1rem] font-semibold font-inter text-[#050810] rounded-md bg-cyan-400/95 transition-all duration-200 disabled:opacity-60 disabled:cursor-not-allowed"
+                  className="px-6 py-2.5 text-sm font-semibold font-inter text-[#050810] rounded-md bg-cyan-400/95 transition-all duration-200 disabled:opacity-60 disabled:cursor-not-allowed"
                 >
                   {sending ? 'Sending...' : 'Send Message'}
                 </motion.button>
               </motion.div>
 
-              <motion.p variants={fadeUp} className="text-center text-[0.95rem] text-white/40 mt-6 leading-relaxed">
-                Or email me directly at{' '}
+              <motion.p variants={fadeUp} className="text-center text-sm text-white/40 mt-6">
+                Or email directly:{' '}
                 <a href="mailto:tarundharsanrj@gmail.com" className="text-cyan-300 font-semibold hover:underline">
                   tarundharsanrj@gmail.com
-                </a>
-              </motion.p>
-            </motion.form>
-          ) : (
-                </a>
-                . Whether you have a specific project in mind, a question, or just want to connect, I&apos;m always happy to hear from you.{' '}
-                <a href="mailto:tarundharsanrj@gmail.com" className="text-cyan-400 font-semibold border-b border-cyan-400/30 hover:border-cyan-400 transition-colors duration-200">
-                  Click here to send an email directly.
                 </a>
               </motion.p>
             </motion.form>
@@ -133,18 +125,18 @@ export default function Contact() {
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5, ease: [0.34, 1.56, 0.64, 1] }}
-              className="text-center py-20 px-8 glass rounded-[2rem] border border-cyan-400/20"
+              className="text-center py-16 px-8 glass rounded-lg border border-cyan-400/20"
             >
-              <i className="bx bx-check-circle text-[7rem] text-green-400 block mb-6 drop-shadow-[0_0_20px_rgba(0,255,136,0.5)]" />
-              <h3 className="text-[2.6rem] font-outfit font-bold mb-4 text-white">Message Sent Successfully!</h3>
-              <p className="text-[1.65rem] text-white/55 mb-8 leading-relaxed">
-                Thank you for reaching out. I&apos;ll get back to you as soon as possible.
+              <i className="bx bx-check-circle text-5xl text-green-400 block mb-4" />
+              <h3 className="text-2xl md:text-3xl font-outfit font-bold mb-3 text-white">Message Sent Successfully!</h3>
+              <p className="text-base md:text-lg text-white/60 mb-6">
+                Thank you for reaching out. I'll get back to you as soon as possible.
               </p>
               <motion.button
                 onClick={() => setSuccess(false)}
-                whileHover={{ y: -3, boxShadow: '0 0 30px rgba(0,212,255,0.5)' }}
-                whileTap={{ scale: 0.97 }}
-                className="px-12 py-4 text-[1.55rem] font-bold font-inter text-[#050810] bg-gradient-to-r from-cyan-400 to-purple-500 rounded-full shadow-[0_4px_20px_rgba(0,212,255,0.35)] hover:shadow-[0_8px_30px_rgba(0,212,255,0.55)] transition-all duration-300"
+                whileHover={{ y: -2 }}
+                whileTap={{ scale: 0.98 }}
+                className="px-8 py-2.5 text-sm font-semibold font-inter text-[#050810] bg-cyan-400/95 rounded-md transition-all duration-200"
               >
                 Send Another Message
               </motion.button>

@@ -8,7 +8,7 @@ export default function Footer() {
   }
 
   return (
-    <footer className="relative bg-[#050810] px-6 lg:px-[9%] py-16 flex flex-col items-center gap-6 border-t border-white/6 overflow-hidden">
+    <footer className="relative bg-[#050810] px-6 lg:px-12 py-20 md:py-24 flex flex-col items-center gap-6 border-t border-white/6 overflow-hidden">
       {/* Centered top line */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-[1px] bg-gradient-to-r from-transparent via-cyan-400 to-transparent" />
 

@@ -15,7 +15,7 @@ export default function About() {
   const [ref, visible] = useReveal()
 
   return (
-    <section id="about" className="relative px-6 lg:px-[9%] py-20 md:py-24 bg-[#050810] overflow-hidden">
+    <section id="about" className="relative px-6 lg:px-12 py-20 md:py-28 bg-[#050810] overflow-hidden">
       {/* Divider */}
       <div className="section-divider" />
 
@@ -27,21 +27,21 @@ export default function About() {
         variants={container}
         initial="hidden"
         animate={visible ? 'show' : 'hidden'}
-        className="relative z-10 max-w-4xl mx-auto"
+        className="relative z-10 max-w-3xl mx-auto"
       >
         {/* Heading */}
-        <motion.h2 variants={fadeUp} className="text-[2.4rem] md:text-[3.2rem] font-outfit font-black mb-3 tracking-tight">
+        <motion.h2 variants={fadeUp} className="text-3xl md:text-4xl font-outfit font-black mb-3 tracking-tight">
           About <span className="gradient-text-cyan">Me</span>
         </motion.h2>
 
-        <motion.h3 variants={fadeUp} className="text-[1.2rem] md:text-[1.4rem] font-outfit font-semibold text-white/70 mb-8">
+        <motion.h3 variants={fadeUp} className="text-lg md:text-xl font-outfit font-semibold text-white/70 mb-6">
           Full Stack Developer &amp; Problem Solver
         </motion.h3>
 
-        <motion.p variants={fadeUp} className="text-[1.05rem] leading-8 text-white/65 mb-4">
+        <motion.p variants={fadeUp} className="text-base md:text-lg leading-8 text-white/65 mb-4">
           I build fast, scalable web apps with clean, maintainable code. I enjoy turning ideas into products and improving UX with data-driven decisions.
         </motion.p>
-        <motion.p variants={fadeUp} className="text-[1.05rem] leading-8 text-white/65 mb-10">
+        <motion.p variants={fadeUp} className="text-base md:text-lg leading-8 text-white/65 mb-10">
           Recently, I&apos;ve focused on API design, React Native for mobile, and performance optimization across the stack.
         </motion.p>
 

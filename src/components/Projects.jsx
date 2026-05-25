@@ -31,34 +31,34 @@ function ProjectCard({ project }) {
       </div>
 
       {/* Image */}
-      <div className="relative h-56 md:h-64 lg:h-72 overflow-hidden bg-[#050810]/80 flex items-center justify-center p-4">
+      <div className="relative h-48 md:h-56 overflow-hidden bg-[#050810]/80 flex items-center justify-center">
         <img
           src={imgError ? project.fallback : project.image}
           alt={project.title}
           onError={() => setImgError(true)}
           loading="lazy"
-          className="w-full h-full object-cover transition-transform duration-400 group-hover:scale-105"
+          className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#0d1120]/60 opacity-0 group-hover:opacity-80 transition-opacity duration-400" />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#0d1120]/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
       </div>
 
       {/* Info */}
-      <div className="p-8 flex flex-col gap-4 flex-1">
-        <h3 className="text-[1.6rem] md:text-[1.8rem] font-outfit font-bold text-white tracking-tight leading-tight">
+      <div className="p-5 md:p-6 flex flex-col gap-3 flex-1">
+        <h3 className="text-lg md:text-xl font-outfit font-bold text-white tracking-tight leading-tight">
           {project.title}
           {project.highlight && (
-            <span className="ml-3 text-[1.1rem] px-3 py-1 bg-gradient-to-r from-cyan-400/20 to-purple-500/20 border border-cyan-400/30 rounded-full text-cyan-400 font-semibold align-middle">
+            <span className="ml-2 text-xs px-2 py-1 bg-cyan-400/10 border border-cyan-300/30 rounded-full text-cyan-300 font-semibold inline-block align-middle">
               Featured
             </span>
           )}
         </h3>
-        <p className="text-[1rem] leading-7 text-white/60 flex-1">{project.description}</p>
-        <div className="flex flex-wrap gap-2 pt-3">
+        <p className="text-sm md:text-base leading-6 text-white/65 flex-1">{project.description}</p>
+        <div className="flex flex-wrap gap-2 pt-2">
           {project.tags.map(tag => (
             <motion.span
               key={tag}
-              whileHover={{ scale: 1.04, y: -2 }}
-              className="px-3 py-1 text-[0.9rem] font-medium font-inter text-white/80 bg-white/3 border border-white/6 rounded-full cursor-default transition-all duration-200"
+              whileHover={{ scale: 1.03 }}
+              className="px-2 py-1 text-xs md:text-sm font-medium font-inter text-white/70 bg-white/4 border border-white/8 rounded-md transition-all duration-200"
             >
               {tag}
             </motion.span>
@@ -75,7 +75,7 @@ export default function Projects() {
   const otherProjects = projects.filter(p => !p.highlight)
 
   return (
-    <section id="projects" className="relative min-h-screen px-6 lg:px-[9%] py-24 bg-[#0a0d1a]">
+    <section id="projects" className="relative px-6 lg:px-12 py-20 md:py-28 bg-[#050810]">
       <div className="section-divider" />
 
       <motion.div
@@ -83,17 +83,19 @@ export default function Projects() {
         variants={container}
         initial="hidden"
         animate={visible ? 'show' : 'hidden'}
-        className="relative z-10 max-w-[130rem] mx-auto"
+        className="relative z-10 max-w-7xl mx-auto"
       >
-        <motion.h2 variants={card} className="text-[2.4rem] md:text-[3.2rem] font-outfit font-black mb-3 tracking-tight">
-          Other <span className="gradient-text-cyan">Projects</span>
-        </motion.h2>
+        {/* Section header */}
+        <motion.div variants={card} className="mb-12">
+          <h2 className="text-3xl md:text-4xl font-outfit font-black leading-tight mb-3">
+            Other <span className="gradient-text-cyan">Projects</span>
+          </h2>
+          <p className="text-base md:text-lg text-white/60 max-w-2xl">
+            A collection of diverse projects showcasing different technical skills and problem-solving approaches.
+          </p>
+        </motion.div>
 
-        <motion.p variants={card} className="text-[1.05rem] text-white/60 mb-12 max-w-xl">
-          A collection of additional projects showcasing diverse technical skills and problem-solving approaches.
-        </motion.p>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">
           {otherProjects.map(project => (
             <ProjectCard key={project.id} project={project} />
           ))}
