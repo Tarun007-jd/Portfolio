@@ -156,7 +156,7 @@ export default function Hero() {
         {/* Profile image */}
         <div className="animate-float w-[36vw] h-[36vw] max-w-[420px] max-h-[420px] xl:w-[420px] xl:h-[420px]">
           <img
-            src="/Portfolio/images/Profile-Picture.jpeg"
+            src="/images/Profile-Picture.jpeg"
             alt="Tarun - Full Stack Developer"
             className="w-full h-full object-cover rounded-full border-[4px] border-cyan-400/60 animate-pulse-glow bg-[#0d1120]"
           />
