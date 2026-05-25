@@ -12,7 +12,7 @@ const container = {
   show: { transition: { staggerChildren: 0.1 } },
 }
 
-const inputClass = `w-full px-6 py-4 text-[1.55rem] font-inter text-white/90 bg-[#050810]/70 border border-cyan-400/12 rounded-xl backdrop-blur-sm placeholder-white/30 transition-all duration-300 focus:outline-none focus:border-cyan-400/60 focus:bg-[#050810]/90 focus:shadow-[0_0_20px_rgba(0,212,255,0.18),0_0_0_3px_rgba(0,212,255,0.06)] valid:not(:placeholder-shown):border-green-400/40 invalid:not(:placeholder-shown):border-red-400/50`
+const inputClass = `w-full px-4 py-3 text-[0.95rem] md:text-[1rem] font-inter text-white/90 bg-[#050810]/70 border border-white/8 rounded-md backdrop-blur-sm placeholder-white/30 transition-all duration-200 focus:outline-none focus:border-cyan-300/60 focus:bg-[#050810]/90 focus:ring-1 focus:ring-cyan-400/30 valid:not(:placeholder-shown):border-green-300/40 invalid:not(:placeholder-shown):border-red-300/50`
 
 export default function Contact() {
   const [ref, visible] = useReveal()
@@ -41,7 +41,7 @@ export default function Contact() {
   }
 
   return (
-    <section id="contact" className="relative min-h-screen px-[9%] py-[10rem] bg-[#050810]">
+    <section id="contact" className="relative px-6 lg:px-[9%] py-20 md:py-24 bg-[#050810]">
       <div className="section-divider" />
 
       <motion.div
@@ -49,18 +49,18 @@ export default function Contact() {
         variants={container}
         initial="hidden"
         animate={visible ? 'show' : 'hidden'}
-        className="relative z-10 max-w-[72rem] mx-auto"
+        className="relative z-10 max-w-2xl mx-auto"
       >
-        <motion.h2 variants={fadeUp} className="text-[4.8rem] font-outfit font-black text-center mb-5 tracking-tight">
+        <motion.h2 variants={fadeUp} className="text-[2.4rem] md:text-[3.2rem] font-outfit font-black text-center mb-3 tracking-tight">
           Get In <span className="gradient-text-cyan">Touch</span>
         </motion.h2>
 
-        <motion.p variants={fadeUp} className="text-[1.8rem] text-white/50 text-center mb-4">
-          Got a project or a collaboration idea? Feel free to get in touch.
+        <motion.p variants={fadeUp} className="text-[1.05rem] text-white/60 text-center mb-8">
+          Have a project or collaboration idea? I'd love to hear from you.
         </motion.p>
 
         {/* Accent line */}
-        <motion.div variants={fadeUp} className="w-20 h-[3px] bg-gradient-to-r from-cyan-400 to-purple-500 rounded-full mx-auto mb-14 shadow-[0_0_12px_rgba(0,212,255,0.5)]" />
+        <motion.div variants={fadeUp} className="w-16 h-[2px] bg-gradient-to-r from-cyan-400 to-purple-500 rounded-full mx-auto mb-10" />
 
         <AnimatePresence mode="wait">
           {!success ? (
@@ -79,24 +79,24 @@ export default function Contact() {
               <input type="hidden" name="sheetId" value={SHEET_ID} />
               <input type="hidden" name="sheetName" value="Sheet1" />
 
-              <motion.div variants={fadeUp} className="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-5">
+              <motion.div variants={fadeUp} className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4 mb-4">
                 <input type="text" name="name" placeholder="Full Name" required aria-label="Full Name" className={inputClass} />
                 <input type="email" name="email" placeholder="Email Address" required aria-label="Email Address" className={inputClass} />
               </motion.div>
 
-              <motion.div variants={fadeUp} className="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-5">
+              <motion.div variants={fadeUp} className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4 mb-4">
                 <input type="tel" name="phone" placeholder="Mobile Number" aria-label="Mobile Number" pattern="[0-9]{10}" title="Enter 10 digit number" className={inputClass} />
                 <input type="text" name="subject" placeholder="Email Subject" required aria-label="Email Subject" className={inputClass} />
               </motion.div>
 
-              <motion.div variants={fadeUp}>
+              <motion.div variants={fadeUp} className="mb-6">
                 <textarea
                   name="message"
-                  rows="8"
+                  rows="6"
                   placeholder="Your Message"
                   required
                   aria-label="Your Message"
-                  className={`${inputClass} resize-none mb-6`}
+                  className={`${inputClass} resize-none`}
                 />
               </motion.div>
 
@@ -104,20 +104,22 @@ export default function Contact() {
                 <motion.button
                   type="submit"
                   disabled={sending}
-                  whileHover={!sending ? { y: -4, boxShadow: '0 0 40px rgba(0,212,255,0.6)' } : {}}
-                  whileTap={!sending ? { scale: 0.97 } : {}}
-                  className="relative px-20 py-5 text-[1.6rem] font-bold font-inter text-[#050810] rounded-full bg-gradient-to-r from-cyan-400 to-purple-500 shadow-[0_0_25px_rgba(0,212,255,0.4)] overflow-hidden group disabled:opacity-60 disabled:cursor-not-allowed transition-all duration-300"
+                  whileHover={!sending ? { y: -3 } : {}}
+                  whileTap={!sending ? { scale: 0.98 } : {}}
+                  className="px-8 py-3 text-[1rem] font-semibold font-inter text-[#050810] rounded-md bg-cyan-400/95 transition-all duration-200 disabled:opacity-60 disabled:cursor-not-allowed"
                 >
-                  <span className="relative z-10">{sending ? 'Sending...' : 'Send Message'}</span>
-                  <span className="absolute inset-0 bg-white/0 group-hover:bg-white/10 transition-all duration-300" />
-                  <span className="absolute top-0 left-0 w-1/2 h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 -translate-x-full group-hover:translate-x-[350%] transition-transform duration-700" />
+                  {sending ? 'Sending...' : 'Send Message'}
                 </motion.button>
               </motion.div>
 
-              <motion.p variants={fadeUp} className="text-center text-[1.4rem] text-white/40 mt-8 leading-relaxed">
-                If you prefer to send an email directly instead of using the form, feel free to reach out to me at{' '}
-                <a href="mailto:tarundharsanrj@gmail.com" className="text-cyan-400 font-semibold border-b border-cyan-400/30 hover:border-cyan-400 transition-colors duration-200">
+              <motion.p variants={fadeUp} className="text-center text-[0.95rem] text-white/40 mt-6 leading-relaxed">
+                Or email me directly at{' '}
+                <a href="mailto:tarundharsanrj@gmail.com" className="text-cyan-300 font-semibold hover:underline">
                   tarundharsanrj@gmail.com
+                </a>
+              </motion.p>
+            </motion.form>
+          ) : (
                 </a>
                 . Whether you have a specific project in mind, a question, or just want to connect, I&apos;m always happy to hear from you.{' '}
                 <a href="mailto:tarundharsanrj@gmail.com" className="text-cyan-400 font-semibold border-b border-cyan-400/30 hover:border-cyan-400 transition-colors duration-200">

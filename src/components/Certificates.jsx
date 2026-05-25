@@ -30,15 +30,15 @@ export default function Certificates() {
   }, [])
 
   return (
-    <section id="certificates" className="relative min-h-screen px-6 md:px-[5%] py-24 bg-[#050810]">
+    <section id="certificates" className="relative px-6 lg:px-[5%] py-20 md:py-24 bg-[#0a0d1a]">
       <div className="section-divider" />
 
-      <div ref={ref} className="relative z-10 max-w-[1300px] mx-auto">
+      <div ref={ref} className="relative z-10 max-w-6xl mx-auto">
         <motion.h2
-          initial={{ opacity: 0, y: 18, filter: 'blur(6px)' }}
+          initial={{ opacity: 0, y: 16, filter: 'blur(4px)' }}
           animate={visible ? { opacity: 1, y: 0, filter: 'blur(0px)' } : {}}
-          transition={{ duration: 0.7 }}
-          className="text-[2.8rem] md:text-[3.6rem] font-outfit font-black text-center mb-12 tracking-tight"
+          transition={{ duration: 0.6 }}
+          className="text-[2.4rem] md:text-[3.2rem] font-outfit font-black mb-12 tracking-tight"
         >
           My <span className="gradient-text-cyan">Certificates</span>
         </motion.h2>
@@ -47,7 +47,7 @@ export default function Certificates() {
           variants={container}
           initial="hidden"
           animate={visible ? 'show' : 'hidden'}
-          className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5"
+          className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4"
         >
           <AnimatePresence mode="popLayout">
             {displayed.map(cert => (
@@ -55,26 +55,26 @@ export default function Certificates() {
                 key={cert.id}
                 variants={cardVariant}
                 layout
-                exit={{ opacity: 0, scale: 0.98 }}
+                exit={{ opacity: 0, scale: 0.95 }}
                 onClick={() => setModal({ src: cert.image, alt: cert.title })}
-                whileHover={{ y: -4 }}
-                className="flex flex-col bg-[#0d1120] rounded-lg overflow-hidden border border-white/6 hover:border-cyan-300/20 shadow-sm hover:shadow-md transition-all duration-250 cursor-pointer group"
+                whileHover={{ y: -3 }}
+                className="flex flex-col bg-[#0d1120] rounded-lg overflow-hidden border border-white/6 hover:border-cyan-300/20 shadow-sm hover:shadow-md transition-all duration-200 cursor-pointer group"
               >
                 {/* Image */}
-                <div className="h-44 md:h-48 flex items-center justify-center bg-[#050810]/80 overflow-hidden p-3">
+                <div className="h-40 md:h-48 flex items-center justify-center bg-[#050810]/80 overflow-hidden p-2 md:p-3">
                   <img
                     src={cert.image}
                     alt={cert.title}
                     loading="lazy"
-                    className="w-full h-full object-contain transition-transform duration-400 group-hover:scale-[1.06]"
+                    className="w-full h-full object-contain transition-transform duration-300 group-hover:scale-105"
                   />
                 </div>
 
                 {/* Info */}
-                <div className="p-5 flex flex-col gap-2 text-center">
-                  <h3 className="text-[1rem] md:text-[1.05rem] font-bold font-outfit text-white leading-snug">{cert.title}</h3>
-                  <p className="text-[0.95rem] text-cyan-300 font-medium opacity-90">Issued by: {cert.issuer}</p>
-                  <p className="text-[0.9rem] text-white/45 font-medium mt-auto">Year: {cert.year}</p>
+                <div className="p-3 md:p-4 flex flex-col gap-1 text-center">
+                  <h3 className="text-[0.95rem] md:text-[1rem] font-bold font-outfit text-white leading-snug line-clamp-2">{cert.title}</h3>
+                  <p className="text-[0.85rem] md:text-[0.9rem] text-cyan-300 font-medium opacity-90">by {cert.issuer}</p>
+                  <p className="text-[0.8rem] md:text-[0.85rem] text-white/40 font-medium mt-auto">{cert.year}</p>
                 </div>
               </motion.div>
             ))}
@@ -82,15 +82,14 @@ export default function Certificates() {
         </motion.div>
 
         {/* Toggle button */}
-        <div className="flex justify-center mt-14">
+        <div className="flex justify-center mt-10">
           <motion.button
             onClick={() => setShowAll(s => !s)}
-            whileHover={{ y: -3, boxShadow: '0 8px 30px rgba(0,212,255,0.5)' }}
-            whileTap={{ scale: 0.97 }}
-            className="px-14 py-4 text-[1.5rem] font-bold font-inter text-[#050810] bg-gradient-to-r from-cyan-400 to-purple-500 rounded-full shadow-[0_4px_20px_rgba(0,212,255,0.35)] transition-all duration-300 relative overflow-hidden group"
+            whileHover={{ y: -2 }}
+            whileTap={{ scale: 0.98 }}
+            className="px-6 py-2 text-[0.95rem] md:text-[1rem] font-semibold font-inter text-[#050810] bg-cyan-400/95 rounded-md transition-all duration-200"
           >
-            <span className="relative z-10">{showAll ? 'View Less' : 'View All'}</span>
-            <span className="absolute inset-0 bg-white/0 group-hover:bg-white/10 transition-all duration-300" />
+            {showAll ? 'View Less' : 'View All'}
           </motion.button>
         </div>
       </div>

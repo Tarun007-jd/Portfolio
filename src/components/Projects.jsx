@@ -71,9 +71,11 @@ function ProjectCard({ project }) {
 
 export default function Projects() {
   const [ref, visible] = useReveal()
+  // Filter out featured projects - only show regular projects
+  const otherProjects = projects.filter(p => !p.highlight)
 
   return (
-    <section id="projects" className="relative min-h-screen px-[9%] py-[10rem] bg-[#0a0d1a]">
+    <section id="projects" className="relative min-h-screen px-6 lg:px-[9%] py-24 bg-[#0a0d1a]">
       <div className="section-divider" />
 
       <motion.div
@@ -83,12 +85,16 @@ export default function Projects() {
         animate={visible ? 'show' : 'hidden'}
         className="relative z-10 max-w-[130rem] mx-auto"
       >
-        <motion.h2 variants={card} className="text-[4.8rem] font-outfit font-black text-center mb-16 tracking-tight">
-          Featured <span className="gradient-text-cyan">Projects</span>
+        <motion.h2 variants={card} className="text-[2.4rem] md:text-[3.2rem] font-outfit font-black mb-3 tracking-tight">
+          Other <span className="gradient-text-cyan">Projects</span>
         </motion.h2>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          {projects.map(project => (
+        <motion.p variants={card} className="text-[1.05rem] text-white/60 mb-12 max-w-xl">
+          A collection of additional projects showcasing diverse technical skills and problem-solving approaches.
+        </motion.p>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
+          {otherProjects.map(project => (
             <ProjectCard key={project.id} project={project} />
           ))}
         </div>

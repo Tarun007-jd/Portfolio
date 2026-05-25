@@ -15,64 +15,62 @@ export default function About() {
   const [ref, visible] = useReveal()
 
   return (
-    <section id="about" className="relative min-h-screen px-[9%] py-[10rem] bg-[#0a0d1a] overflow-hidden">
+    <section id="about" className="relative px-6 lg:px-[9%] py-20 md:py-24 bg-[#050810] overflow-hidden">
       {/* Divider */}
       <div className="section-divider" />
 
-      {/* Dot grid */}
-      <div className="absolute inset-0 opacity-40"
-        style={{ backgroundImage: 'radial-gradient(circle, rgba(0,212,255,0.06) 1px, transparent 0)', backgroundSize: '40px 40px' }} />
+      {/* Ambient gradient */}
+      <div className="absolute top-0 right-0 w-[500px] h-[300px] bg-gradient-to-bl from-cyan-400/3 to-transparent blur-3xl pointer-events-none" />
 
       <motion.div
         ref={ref}
         variants={container}
         initial="hidden"
         animate={visible ? 'show' : 'hidden'}
-        className="relative z-10 max-w-[90rem] mx-auto"
+        className="relative z-10 max-w-4xl mx-auto"
       >
         {/* Heading */}
-        <motion.h2 variants={fadeUp} className="text-[4.8rem] font-outfit font-black text-center mb-14 tracking-tight leading-none">
+        <motion.h2 variants={fadeUp} className="text-[2.4rem] md:text-[3.2rem] font-outfit font-black mb-3 tracking-tight">
           About <span className="gradient-text-cyan">Me</span>
         </motion.h2>
 
-        <motion.h3 variants={fadeUp} className="text-[2.4rem] font-outfit font-semibold text-center text-white/60 mb-6 tracking-wide">
+        <motion.h3 variants={fadeUp} className="text-[1.2rem] md:text-[1.4rem] font-outfit font-semibold text-white/70 mb-8">
           Full Stack Developer &amp; Problem Solver
         </motion.h3>
 
-        <motion.p variants={fadeUp} className="text-[1.65rem] leading-[1.85] text-white/55 text-center mb-5">
+        <motion.p variants={fadeUp} className="text-[1.05rem] leading-8 text-white/65 mb-4">
           I build fast, scalable web apps with clean, maintainable code. I enjoy turning ideas into products and improving UX with data-driven decisions.
         </motion.p>
-        <motion.p variants={fadeUp} className="text-[1.65rem] leading-[1.85] text-white/55 text-center mb-10">
+        <motion.p variants={fadeUp} className="text-[1.05rem] leading-8 text-white/65 mb-10">
           Recently, I&apos;ve focused on API design, React Native for mobile, and performance optimization across the stack.
         </motion.p>
 
         {/* Highlights */}
-        <motion.ul variants={container} className="max-w-[80rem] mx-auto grid gap-3 mb-14">
+        <motion.ul variants={container} className="grid gap-2 md:gap-3 mb-12">
           {aboutHighlights.map((item, i) => (
             <motion.li
               key={i}
               variants={fadeUp}
-              whileHover={{ x: 8 }}
-              className="flex items-center gap-4 px-7 py-5 glass rounded-2xl text-[1.6rem] text-white/65 border border-cyan-400/10 hover:border-cyan-400/30 hover:bg-cyan-400/5 transition-all duration-300 cursor-default"
+              whileHover={{ x: 6 }}
+              className="flex items-center gap-3 px-4 md:px-6 py-3 md:py-4 glass rounded-lg text-[0.98rem] md:text-[1.05rem] text-white/70 border border-white/6 hover:border-cyan-300/20 transition-all duration-200"
             >
-              <span className="text-cyan-400 text-[1.8rem] drop-shadow-[0_0_8px_rgba(0,212,255,0.5)]">✦</span>
+              <span className="text-cyan-400 text-[1.2rem]">→</span>
               {item}
             </motion.li>
           ))}
         </motion.ul>
 
         {/* Info cards */}
-        <motion.div variants={container} className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-[90rem] mx-auto">
+        <motion.div variants={container} className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {aboutInfo.map(({ label, value }, i) => (
             <motion.div
               key={i}
               variants={fadeUp}
-              whileHover={{ y: -8, borderColor: 'rgba(0,212,255,0.4)' }}
-              className="glass rounded-2xl p-10 text-center border border-cyan-400/10 hover:shadow-[0_15px_40px_rgba(0,212,255,0.12)] transition-all duration-300 group relative overflow-hidden"
+              whileHover={{ y: -4 }}
+              className="glass rounded-lg p-5 md:p-6 text-center border border-white/6 transition-all duration-200 group"
             >
-              <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-cyan-400 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              <h4 className="text-[2rem] font-outfit font-bold text-cyan-400 mb-3">{label}</h4>
-              <p className="text-[1.55rem] text-white/60 leading-snug">{value}</p>
+              <h4 className="text-[1.05rem] font-outfit font-semibold text-cyan-300 mb-2">{label}</h4>
+              <p className="text-[0.95rem] text-white/60 leading-snug">{value}</p>
             </motion.div>
           ))}
         </motion.div>

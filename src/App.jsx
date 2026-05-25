@@ -1,11 +1,12 @@
 import ScrollProgress from './components/ScrollProgress'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
-import About from './components/About'
-import Skills from './components/Skills'
+import FeaturedProject from './components/FeaturedProject'
 import Projects from './components/Projects'
-import Certificates from './components/Certificates'
+import Skills from './components/Skills'
+import About from './components/About'
 import Education from './components/Education'
+import Certificates from './components/Certificates'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
 
@@ -16,11 +17,12 @@ export default function App() {
       <Navbar />
       <main>
         <Hero />
-        <About />
-        <Skills />
+        <FeaturedProject />
         <Projects />
-        <Certificates />
+        <Skills />
+        <About />
         <Education />
+        <Certificates />
         <Contact />
       </main>
       <Footer />
