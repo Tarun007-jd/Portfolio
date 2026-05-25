@@ -4,6 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="portfolio.css">
     <link rel="stylesheet" href="sections.css">
     <link rel="stylesheet" href="responsive.css">
@@ -14,6 +17,7 @@
 </head>
 
 <body>
+    <div id="scroll-progress" aria-hidden="true"></div>
     <header class="header">
         <a href="#" class="logo"><span>Tarun Dharsan R J</span></a>
 
@@ -57,7 +61,7 @@
                         class='bx bxl-whatsapp'></i></a>
             </div>
 
-            <div class="home-btn-group" style="display: flex; gap: 2rem; margin-top: 2rem;">
+            <div class="home-btn-group">
                 <a href="#contact" class="btn">Hire Me</a>
                 <a href="https://drive.google.com/file/d/1BHPbxFoWxO6gE8B1I9aq_NvZFfB8Gn3F/view?usp=sharing" target="_blank" class="btn btn-secondary">Download CV</a>
             </div>
@@ -69,6 +73,7 @@
     </section>
 
     <section class="about" id="about">
+        <div class="about-bg-grid" aria-hidden="true"></div>
         <div class="about-content">
             <h2 class="heading reveal-init">About <span>Me</span></h2>
             <h3>Full Stack Developer & Problem Solver</h3>
@@ -561,28 +566,20 @@
                 <textarea name="message" cols="30" rows="10" placeholder="Your Message" required
                     aria-label="Your Message"></textarea>
                 <button type="submit" class="btn" id="submitBtn" aria-label="Send Message">Send Message</button>
-                <p class="contact-email-note" style="margin-top: 1.2rem; font-size: 1rem; color: #c9c9c9;">
+                <p class="contact-email-note">
                     If you prefer to send an email directly instead of using the form, feel free to reach out to me at
-                    <a href="mailto:tarundharsanrj@gmail.com"
-                        style="color: #1f6feb; text-decoration: underline;">tarundharsanrj@gmail.com</a>.
+                    <a href="mailto:tarundharsanrj@gmail.com">tarundharsanrj@gmail.com</a>.
                     Whether you have a specific project in mind, a question, or just want to connect, I'm always happy
-                    to
-                    hear from you.
-                    <a href="mailto:tarundharsanrj@gmail.com" style="color: #1f6feb; text-decoration: underline;">Click
-                        here
-                        to send an email directly.</a>
+                    to hear from you.
+                    <a href="mailto:tarundharsanrj@gmail.com">Click here to send an email directly.</a>
                 </p>
             </form>
 
-            <div id="successMessage"
-                style="display: none; text-align: center; padding: 4rem; background: rgba(0, 217, 255, 0.05); border: 1px solid var(--main-color); border-radius: 1.5rem; margin-top: 2rem;">
-                <i class='bx bx-check-circle'
-                    style="font-size: 6rem; color: var(--main-color); margin-bottom: 1.5rem;"></i>
-                <h3 style="font-size: 2.4rem; color: var(--text-color); margin-bottom: 1rem;">Message Sent Successfully!
-                </h3>
-                <p style="font-size: 1.6rem; color: rgba(255, 255, 255, 0.8);">Thank you for reaching out. I'll get back
-                    to you as soon as possible.</p>
-                <button class="btn" onclick="resetForm()" style="margin-top: 2.5rem;">Send Another Message</button>
+            <div id="successMessage">
+                <i class='bx bx-check-circle'></i>
+                <h3>Message Sent Successfully!</h3>
+                <p>Thank you for reaching out. I'll get back to you as soon as possible.</p>
+                <button class="btn" onclick="resetForm()">Send Another Message</button>
             </div>
         </div>
     </section>

@@ -1,8 +1,12 @@
 /* COMPONENT STYLES */
 
-/* Heading Component */
+/* ════════════════════════════════
+   Heading Component
+════════════════════════════════ */
 .heading {
-    font-size: 4.5rem;
+    font-size: 4.8rem;
+    font-family: 'Outfit', 'Inter', sans-serif;
+    font-weight: 800;
     text-align: center;
     margin-bottom: 5rem;
     position: relative;
@@ -10,12 +14,21 @@
     width: 100%;
     will-change: transform, opacity, filter;
     overflow: hidden;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+}
+
+.heading span {
+    background: var(--gradient-main);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .heading.reveal-init {
     opacity: 0;
-    transform: translateY(18px);
-    filter: blur(6px);
+    transform: translateY(24px);
+    filter: blur(8px);
 }
 
 .heading.reveal-in {
@@ -26,12 +39,12 @@
     content: '';
     position: absolute;
     left: 50%;
-    bottom: -0.6rem;
+    bottom: -0.8rem;
     transform: translateX(-50%);
     width: 0;
     height: 3px;
     border-radius: 3px;
-    background: linear-gradient(90deg, var(--main-color), var(--accent-color));
+    background: var(--gradient-main);
     opacity: 0;
 }
 
@@ -39,22 +52,30 @@
     animation: headingShimmer 1.1s .2s ease forwards;
 }
 
-/* Button Components */
+/* ════════════════════════════════
+   Button Components
+════════════════════════════════ */
 .btn {
-    display: inline-block;
-    padding: 1.2rem 3.5rem;
-    background: linear-gradient(135deg, var(--main-color), var(--accent-color));
-    border-radius: 4rem;
-    box-shadow: 0 0 20px rgba(0, 217, 255, 0.5);
-    font-size: 1.6rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+    padding: 1.4rem 3.6rem;
+    background: var(--gradient-main);
+    border-radius: var(--radius-full);
+    box-shadow: 0 0 24px rgba(0, 212, 255, 0.4), 0 4px 16px rgba(0, 0, 0, 0.3);
+    font-size: 1.55rem;
     color: var(--bg-color);
-    letter-spacing: 0.1rem;
-    font-weight: 600;
-    transition: all 0.3s ease;
+    letter-spacing: 0.03em;
+    font-weight: 700;
+    font-family: 'Inter', sans-serif;
+    transition: var(--transition-base);
     border: 2px solid transparent;
-    margin-right: 1.5rem;
+    margin-right: 1rem;
     position: relative;
     overflow: hidden;
+    cursor: pointer;
+    white-space: nowrap;
 }
 
 .btn::before {
@@ -62,42 +83,76 @@
     position: absolute;
     top: 0;
     left: -100%;
-    width: 100%;
+    width: 70%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-    transition: left 0.5s ease;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent);
+    transition: left 0.6s ease;
+    transform: skewX(-20deg);
 }
 
 .btn:hover::before {
-    left: 100%;
+    left: 150%;
 }
 
 .btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 5px 30px rgba(0, 217, 255, 0.7);
+    transform: translateY(-4px);
+    box-shadow: 0 0 40px rgba(0, 212, 255, 0.65), 0 8px 30px rgba(0, 0, 0, 0.35);
 }
 
+.btn:active {
+    transform: translateY(-2px);
+}
+
+/* Secondary Button */
 .btn-secondary {
     background: transparent;
-    border: 2px solid var(--main-color);
+    border: 2px solid rgba(0, 212, 255, 0.5);
     color: var(--main-color);
+    box-shadow: 0 0 15px rgba(0, 212, 255, 0.1), inset 0 0 15px rgba(0, 212, 255, 0.04);
+    backdrop-filter: blur(8px);
+}
+
+.btn-secondary::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--gradient-main);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    border-radius: inherit;
 }
 
 .btn-secondary:hover {
-    background: var(--main-color);
+    border-color: var(--main-color);
     color: var(--bg-color);
+    box-shadow: 0 0 30px rgba(0, 212, 255, 0.45), 0 6px 20px rgba(0, 0, 0, 0.3);
 }
 
+.btn-secondary:hover::after {
+    opacity: 1;
+}
+
+.btn-secondary:hover span,
+.btn-secondary:hover {
+    position: relative;
+}
+
+/* Small Button */
 .btn-small {
-    padding: 0.8rem 2rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.9rem 2.2rem;
     background: var(--main-color);
     color: var(--bg-color);
-    border-radius: 2rem;
-    font-size: 1.4rem;
-    font-weight: 600;
-    transition: all 0.3s ease;
+    border-radius: var(--radius-full);
+    font-size: 1.35rem;
+    font-weight: 700;
+    font-family: 'Inter', sans-serif;
+    transition: var(--transition-base);
     position: relative;
     overflow: hidden;
+    cursor: pointer;
 }
 
 .btn-small::before {
@@ -105,68 +160,89 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
-    width: 0;
-    height: 0;
-    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%) scale(0);
+    width: 300%;
+    height: 300%;
+    background: rgba(255, 255, 255, 0.2);
     border-radius: 50%;
-    transition: width 0.6s ease, height 0.6s ease;
+    transition: transform 0.6s ease;
 }
 
 .btn-small:hover::before {
-    width: 300px;
-    height: 300px;
+    transform: translate(-50%, -50%) scale(1);
 }
 
 .btn-small:hover {
     transform: translateY(-3px);
-    box-shadow: 0 5px 20px rgba(0, 217, 255, 0.4);
+    box-shadow: 0 5px 20px rgba(0, 212, 255, 0.45);
 }
 
-/* Social Media Icons */
+/* ════════════════════════════════
+   Social Media Icons
+════════════════════════════════ */
+.social-media {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin: 2.5rem 0 3rem;
+}
+
 .social-media a {
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    width: 4rem;
-    height: 4rem;
-    background: transparent;
-    border: 2px solid var(--main-color);
+    width: 4.4rem;
+    height: 4.4rem;
+    background: rgba(0, 212, 255, 0.05);
+    border: 1.5px solid rgba(0, 212, 255, 0.3);
     border-radius: 50%;
     font-size: 2rem;
     color: var(--main-color);
-    margin: 3rem 1.5rem 3rem 0;
-    transition: all 0.3s ease;
+    transition: var(--transition-base);
     position: relative;
     overflow: hidden;
+    backdrop-filter: blur(4px);
 }
 
 .social-media a::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 0;
-    height: 100%;
-    background: var(--main-color);
-    transition: width 0.3s ease;
-    z-index: -1;
+    inset: 0;
+    background: var(--gradient-main);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    border-radius: 50%;
+}
+
+.social-media a i {
+    position: relative;
+    z-index: 1;
+    transition: var(--transition-base);
 }
 
 .social-media a:hover::before {
-    width: 100%;
+    opacity: 1;
 }
 
 .social-media a:hover {
     color: var(--bg-color);
-    transform: translateY(-5px);
-    box-shadow: var(--shadow-glow);
+    transform: translateY(-5px) scale(1.1);
+    box-shadow: var(--shadow-glow-sm);
+    border-color: transparent;
 }
 
-/* Text Animation Component */
+.social-media a:hover i {
+    color: var(--bg-color);
+}
+
+/* ════════════════════════════════
+   Text Animation Component
+════════════════════════════════ */
 .text-animation {
     position: relative;
     display: inline-block;
+    color: var(--main-color);
+    font-weight: 700;
 }
 
 .text-animation::before {
@@ -179,86 +255,120 @@
     content: '' !important;
     position: absolute !important;
     left: 0 !important;
-    bottom: 0 !important;
+    bottom: -2px !important;
     width: 100% !important;
     height: 2px !important;
-    background: var(--main-color) !important;
+    background: var(--gradient-main) !important;
     transform-origin: left !important;
     animation: underlinePulse var(--underline-speed, 2s) ease-in-out infinite !important;
 }
 
-/* Card Components */
+/* ════════════════════════════════
+   Card Components (Info Items)
+════════════════════════════════ */
 .info-item {
-    background: linear-gradient(135deg, rgba(0, 217, 255, 0.1), rgba(102, 126, 234, 0.1));
+    background: rgba(13, 17, 32, 0.8);
     padding: 3rem 2rem;
-    border-radius: 1.5rem;
+    border-radius: var(--radius-lg);
     text-align: center;
-    border: 1px solid rgba(0, 217, 255, 0.2);
-    transition: all 0.3s ease;
+    border: var(--border-subtle);
+    transition: var(--transition-base);
     position: relative;
     overflow: hidden;
+    backdrop-filter: blur(10px);
 }
 
 .info-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--gradient-main);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.info-item:hover::before {
+    opacity: 1;
+}
+
+.info-item::after {
     content: '';
     position: absolute;
     top: -50%;
     left: -50%;
     width: 200%;
     height: 200%;
-    background: radial-gradient(circle, rgba(0, 217, 255, 0.1), transparent);
-    transition: all 0.5s ease;
+    background: radial-gradient(circle, rgba(0, 212, 255, 0.06) 0%, transparent 60%);
+    transition: var(--transition-slow);
     opacity: 0;
 }
 
-.info-item:hover::before {
+.info-item:hover::after {
     opacity: 1;
-    transform: rotate(45deg);
 }
 
 .info-item:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 10px 30px rgba(0, 217, 255, 0.3);
-    border-color: var(--main-color);
+    transform: translateY(-8px);
+    box-shadow: 0 15px 40px rgba(0, 212, 255, 0.15), var(--shadow-card);
+    border-color: rgba(0, 212, 255, 0.3);
 }
 
 .info-item h4 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 0.8rem;
     color: var(--main-color);
     position: relative;
     z-index: 2;
+    font-family: 'Outfit', sans-serif;
+    letter-spacing: -0.01em;
 }
 
 .info-item p {
-    font-size: 1.6rem;
+    font-size: 1.5rem;
     position: relative;
     z-index: 2;
     margin: 0;
+    color: var(--text-muted);
+    line-height: 1.5;
 }
 
-/* Skill Tags */
+/* ════════════════════════════════
+   Skill Tags
+════════════════════════════════ */
 .skill-tag {
+    display: inline-flex;
+    align-items: center;
     padding: 0.8rem 1.8rem;
-    background: rgba(0, 217, 255, 0.1);
-    border: 1px solid rgba(0, 217, 255, 0.3);
-    border-radius: 2rem;
-    font-size: 1.4rem;
+    background: rgba(0, 212, 255, 0.06);
+    border: 1px solid rgba(0, 212, 255, 0.2);
+    border-radius: var(--radius-full);
+    font-size: 1.35rem;
+    font-weight: 500;
     color: var(--text-color);
-    transition: all 0.3s ease;
+    transition: var(--transition-base);
     cursor: default;
+    backdrop-filter: blur(4px);
+    font-family: 'Inter', sans-serif;
 }
 
 .skill-tag:hover {
-    background: var(--main-color);
+    background: var(--gradient-main);
     color: var(--bg-color);
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(0, 217, 255, 0.4);
+    transform: translateY(-3px) scale(1.04);
+    box-shadow: 0 6px 20px rgba(0, 212, 255, 0.35);
+    border-color: transparent;
+    font-weight: 600;
 }
 
-/* Utility Classes */
+/* ════════════════════════════════
+   Utility Classes
+════════════════════════════════ */
 .text-gradient {
-    background: linear-gradient(135deg, var(--main-color), var(--accent-color));
+    background: var(--gradient-main);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -266,4 +376,10 @@
 
 .glow {
     box-shadow: var(--shadow-glow);
+}
+
+.glass {
+    background: rgba(13, 17, 32, 0.6);
+    backdrop-filter: blur(16px) saturate(150%);
+    border: var(--border-subtle);
 }
