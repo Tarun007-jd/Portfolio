@@ -1,0 +1,163 @@
+@import "tailwindcss";
+
+@theme {
+  --color-cyber-black: #050810;
+  --color-cyber-dark: #0a0d1a;
+  --color-cyber-card: #0d1120;
+  --color-cyber-border: rgba(0, 212, 255, 0.12);
+  --color-cyber-cyan: #00d4ff;
+  --color-cyber-purple: #7c6ef5;
+  --color-cyber-green: #00ff88;
+  --font-inter: "Inter", sans-serif;
+  --font-outfit: "Outfit", sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+html {
+  font-family: "Inter", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+body {
+  background-color: #050810;
+  color: #e8eaf6;
+  scroll-padding-top: 85px;
+}
+
+/* Ambient dot-grid */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(0, 212, 255, 0.035) 1px, transparent 0);
+  background-size: 44px 44px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: #050810; }
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #00d4ff, #7c6ef5);
+  border-radius: 10px;
+}
+
+/* Selection */
+::selection {
+  background: rgba(0, 212, 255, 0.2);
+  color: #00d4ff;
+}
+
+/* Gradient text utility */
+.gradient-text {
+  background: linear-gradient(135deg, #ffffff 0%, #00d4ff 45%, #7c6ef5 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-text-cyan {
+  background: linear-gradient(135deg, #00d4ff, #7c6ef5);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Glow shadow utilities */
+.glow-cyan { box-shadow: 0 0 25px rgba(0,212,255,0.4), 0 0 60px rgba(0,212,255,0.12); }
+.glow-cyan-sm { box-shadow: 0 0 15px rgba(0,212,255,0.3); }
+.text-glow { filter: drop-shadow(0 0 20px rgba(0, 212, 255, 0.35)); }
+
+/* Glass card */
+.glass {
+  background: rgba(13, 17, 32, 0.65);
+  backdrop-filter: blur(16px) saturate(150%);
+  -webkit-backdrop-filter: blur(16px) saturate(150%);
+  border: 1px solid rgba(0, 212, 255, 0.1);
+}
+
+/* Section divider line */
+.section-divider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.25), transparent);
+}
+
+/* Typewriter cursor */
+.typewriter-cursor::after {
+  content: "|";
+  animation: blink 0.8s ease-in-out infinite;
+  color: #00d4ff;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* Float animation for hero image */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-18px); }
+}
+
+.animate-float { animation: float 6s ease-in-out infinite; }
+
+/* Orbit ring */
+@keyframes orbit {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+.animate-orbit { animation: orbit 6s linear infinite; }
+
+/* Pulse glow */
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 20px rgba(0,212,255,0.35), 0 0 50px rgba(0,212,255,0.1); }
+  50%       { box-shadow: 0 0 40px rgba(0,212,255,0.6), 0 0 80px rgba(0,212,255,0.2); }
+}
+.animate-pulse-glow { animation: pulseGlow 4s ease-in-out infinite; }
+
+/* Shimmer sweep for buttons */
+@keyframes shimmer {
+  from { transform: translateX(-100%) skewX(-20deg); }
+  to   { transform: translateX(300%) skewX(-20deg); }
+}
+
+/* Gradient border on hover for cards */
+.card-hover-border {
+  position: relative;
+}
+.card-hover-border::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(0,212,255,0), rgba(0,212,255,0));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  transition: background 0.4s ease;
+  pointer-events: none;
+}
+.card-hover-border:hover::before {
+  background: linear-gradient(135deg, #00d4ff, #7c6ef5);
+}
+
+/* Underline pulse for typewriter */
+@keyframes underlinePulse {
+  0%, 100% { opacity: 0.5; transform: scaleX(0.7); }
+  50% { opacity: 1; transform: scaleX(1); }
+}
