@@ -30,15 +30,15 @@ export default function Certificates() {
   }, [])
 
   return (
-    <section id="certificates" className="relative min-h-screen px-[5%] py-[10rem] bg-[#050810]">
+    <section id="certificates" className="relative min-h-screen px-6 md:px-[5%] py-24 bg-[#050810]">
       <div className="section-divider" />
 
       <div ref={ref} className="relative z-10 max-w-[1300px] mx-auto">
         <motion.h2
-          initial={{ opacity: 0, y: 24, filter: 'blur(8px)' }}
+          initial={{ opacity: 0, y: 18, filter: 'blur(6px)' }}
           animate={visible ? { opacity: 1, y: 0, filter: 'blur(0px)' } : {}}
-          transition={{ duration: 0.8 }}
-          className="text-[4.8rem] font-outfit font-black text-center mb-16 tracking-tight"
+          transition={{ duration: 0.7 }}
+          className="text-[2.8rem] md:text-[3.6rem] font-outfit font-black text-center mb-12 tracking-tight"
         >
           My <span className="gradient-text-cyan">Certificates</span>
         </motion.h2>
@@ -51,17 +51,17 @@ export default function Certificates() {
         >
           <AnimatePresence mode="popLayout">
             {displayed.map(cert => (
-              <motion.div
+                <motion.div
                 key={cert.id}
                 variants={cardVariant}
                 layout
-                exit={{ opacity: 0, scale: 0.9 }}
+                exit={{ opacity: 0, scale: 0.98 }}
                 onClick={() => setModal({ src: cert.image, alt: cert.title })}
-                whileHover={{ y: -6, scale: 1.02 }}
-                className="flex flex-col bg-[#0d1120] rounded-2xl overflow-hidden border border-cyan-400/10 hover:border-cyan-400/35 shadow-[0_8px_24px_rgba(0,0,0,0.4)] hover:shadow-[0_16px_40px_rgba(0,212,255,0.14)] transition-all duration-300 cursor-pointer group"
+                whileHover={{ y: -4 }}
+                className="flex flex-col bg-[#0d1120] rounded-lg overflow-hidden border border-white/6 hover:border-cyan-300/20 shadow-sm hover:shadow-md transition-all duration-250 cursor-pointer group"
               >
                 {/* Image */}
-                <div className="h-[18rem] flex items-center justify-center bg-[#050810]/80 overflow-hidden p-3">
+                <div className="h-44 md:h-48 flex items-center justify-center bg-[#050810]/80 overflow-hidden p-3">
                   <img
                     src={cert.image}
                     alt={cert.title}
@@ -72,9 +72,9 @@ export default function Certificates() {
 
                 {/* Info */}
                 <div className="p-5 flex flex-col gap-2 text-center">
-                  <h3 className="text-[1.3rem] font-bold font-outfit text-white leading-snug">{cert.title}</h3>
-                  <p className="text-[1.1rem] text-cyan-400 font-medium opacity-90">Issued by: {cert.issuer}</p>
-                  <p className="text-[1rem] text-white/45 font-medium mt-auto">Year: {cert.year}</p>
+                  <h3 className="text-[1rem] md:text-[1.05rem] font-bold font-outfit text-white leading-snug">{cert.title}</h3>
+                  <p className="text-[0.95rem] text-cyan-300 font-medium opacity-90">Issued by: {cert.issuer}</p>
+                  <p className="text-[0.9rem] text-white/45 font-medium mt-auto">Year: {cert.year}</p>
                 </div>
               </motion.div>
             ))}

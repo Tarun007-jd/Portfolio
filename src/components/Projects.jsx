@@ -18,9 +18,9 @@ function ProjectCard({ project }) {
   return (
     <motion.div
       variants={card}
-      whileHover={{ y: -14 }}
-      transition={{ type: 'spring', stiffness: 300, damping: 25 }}
-      className="group flex flex-col bg-[#0d1120] rounded-[2rem] overflow-hidden border border-cyan-400/10 hover:border-cyan-400/40 shadow-[0_8px_32px_rgba(0,0,0,0.5)] hover:shadow-[0_25px_60px_rgba(0,212,255,0.18),0_10px_30px_rgba(0,0,0,0.5)] transition-all duration-500 relative"
+      whileHover={{ y: -8 }}
+      transition={{ type: 'spring', stiffness: 260, damping: 28 }}
+      className="group flex flex-col bg-[#0d1120] rounded-xl overflow-hidden border border-white/6 hover:border-cyan-300/20 shadow-sm hover:shadow-lg transition-all duration-400 relative"
     >
       {/* Top gradient border on hover */}
       <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-cyan-400 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-400" />
@@ -31,20 +31,20 @@ function ProjectCard({ project }) {
       </div>
 
       {/* Image */}
-      <div className="relative h-[32rem] overflow-hidden bg-[#050810]/80 flex items-center justify-center p-6">
+      <div className="relative h-56 md:h-64 lg:h-72 overflow-hidden bg-[#050810]/80 flex items-center justify-center p-4">
         <img
           src={imgError ? project.fallback : project.image}
           alt={project.title}
           onError={() => setImgError(true)}
           loading="lazy"
-          className="w-full h-full object-contain transition-transform duration-600 group-hover:scale-[1.07]"
+          className="w-full h-full object-cover transition-transform duration-400 group-hover:scale-105"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#0d1120]/60 opacity-0 group-hover:opacity-100 transition-opacity duration-400" />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#0d1120]/60 opacity-0 group-hover:opacity-80 transition-opacity duration-400" />
       </div>
 
       {/* Info */}
       <div className="p-8 flex flex-col gap-4 flex-1">
-        <h3 className="text-[2.4rem] font-outfit font-bold text-white tracking-tight leading-tight">
+        <h3 className="text-[1.6rem] md:text-[1.8rem] font-outfit font-bold text-white tracking-tight leading-tight">
           {project.title}
           {project.highlight && (
             <span className="ml-3 text-[1.1rem] px-3 py-1 bg-gradient-to-r from-cyan-400/20 to-purple-500/20 border border-cyan-400/30 rounded-full text-cyan-400 font-semibold align-middle">
@@ -52,13 +52,13 @@ function ProjectCard({ project }) {
             </span>
           )}
         </h3>
-        <p className="text-[1.6rem] leading-[1.85] text-white/55 flex-1">{project.description}</p>
-        <div className="flex flex-wrap gap-3 pt-1">
+        <p className="text-[1rem] leading-7 text-white/60 flex-1">{project.description}</p>
+        <div className="flex flex-wrap gap-2 pt-3">
           {project.tags.map(tag => (
             <motion.span
               key={tag}
-              whileHover={{ scale: 1.08, y: -2 }}
-              className="px-5 py-2 text-[1.3rem] font-semibold font-inter text-purple-300 bg-purple-500/10 border border-purple-500/20 rounded-full cursor-default transition-all duration-200 hover:bg-purple-500/80 hover:text-white hover:border-transparent"
+              whileHover={{ scale: 1.04, y: -2 }}
+              className="px-3 py-1 text-[0.9rem] font-medium font-inter text-white/80 bg-white/3 border border-white/6 rounded-full cursor-default transition-all duration-200"
             >
               {tag}
             </motion.span>

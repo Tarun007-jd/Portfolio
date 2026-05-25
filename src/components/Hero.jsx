@@ -51,7 +51,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center justify-between gap-12 px-[9%] pt-28 pb-16 bg-[#050810] overflow-hidden"
+      className="relative min-h-[75vh] flex items-center justify-between gap-8 px-6 lg:px-[9%] pt-24 pb-12 bg-[#050810] overflow-hidden"
     >
       <Starfield />
 
@@ -61,38 +61,28 @@ export default function Hero() {
 
       {/* Content */}
       <div className="relative z-10 max-w-[62rem]">
-        <motion.h3
-          {...fadeUp(0)}
-          className="text-[2.4rem] font-outfit font-medium text-white/50 uppercase tracking-[0.1em] mb-2"
-        >
+        <motion.h3 {...fadeUp(0)} className="text-sm font-outfit font-medium text-white/50 uppercase tracking-widest mb-2">
           Hello, I am
         </motion.h3>
 
         <motion.h1
           {...fadeUp(0.2)}
-          className="text-[6.4rem] font-outfit font-black leading-[1.08] tracking-tight gradient-text mb-4 text-glow"
+          className="text-[3.6rem] md:text-[4.6rem] lg:text-[5.2rem] font-outfit font-extrabold leading-[1.02] tracking-tight mb-3 text-white"
         >
           Tarun Dharsan R J
         </motion.h1>
 
-        <motion.h3
-          {...fadeUp(0.4)}
-          className="text-[2.8rem] font-outfit font-semibold text-white/80 mb-6"
-        >
+        <motion.h3 {...fadeUp(0.4)} className="text-[1.5rem] md:text-[1.9rem] font-outfit font-semibold text-white/80 mb-4">
           And I&apos;m a <Typewriter roles={roles} />
         </motion.h3>
 
-        <motion.p
-          {...fadeUp(0.55)}
-          className="text-[1.7rem] leading-[1.85] text-white/55 max-w-[52rem] mb-8 font-inter"
-        >
-          Computer Science student skilled in Full-Stack development
-          with a passion for creating visually stunning,
-          user-friendly websites and Python programming.
+        <motion.p {...fadeUp(0.55)} className="text-[1.05rem] md:text-[1.2rem] leading-7 text-white/60 max-w-2xl mb-6 font-inter">
+          Computer Science student skilled in Full-Stack development with a passion for creating visually
+          balanced, user-centered websites and reliable Python tooling.
         </motion.p>
 
         {/* Social icons */}
-        <motion.div {...fadeUp(0.65)} className="flex flex-wrap gap-3 mb-10">
+        <motion.div {...fadeUp(0.65)} className="flex flex-wrap gap-3 mb-8">
           {socialLinks.map(({ icon, href, label }) => (
             <motion.a
               key={label}
@@ -100,9 +90,9 @@ export default function Hero() {
               target={href.startsWith('http') ? '_blank' : undefined}
               rel="noopener noreferrer"
               aria-label={label}
-              whileHover={{ y: -6, scale: 1.12 }}
-              whileTap={{ scale: 0.95 }}
-              className="w-[4.4rem] h-[4.4rem] flex items-center justify-center rounded-full border border-cyan-400/30 bg-cyan-400/5 text-cyan-400 text-[2rem] backdrop-blur-sm transition-all duration-300 hover:bg-cyan-400 hover:text-[#050810] hover:border-transparent hover:shadow-[0_0_18px_rgba(0,212,255,0.5)]"
+              whileHover={{ y: -4, scale: 1.06 }}
+              whileTap={{ scale: 0.98 }}
+              className="w-10 h-10 flex items-center justify-center rounded-md border border-white/6 bg-transparent text-cyan-300 text-lg backdrop-blur-sm transition-all duration-200 hover:bg-cyan-400/10 hover:text-cyan-300"
             >
               <i className={`bx ${icon}`} />
             </motion.a>
@@ -110,27 +100,24 @@ export default function Hero() {
         </motion.div>
 
         {/* CTA Buttons */}
-        <motion.div {...fadeUp(0.75)} className="flex flex-wrap gap-5">
+        <motion.div {...fadeUp(0.75)} className="flex flex-wrap gap-4">
           <motion.a
             href="#contact"
             onClick={e => { e.preventDefault(); document.querySelector('#contact').scrollIntoView({ behavior: 'smooth' }) }}
-            whileHover={{ y: -4, boxShadow: '0 0 40px rgba(0,212,255,0.6)' }}
-            whileTap={{ scale: 0.97 }}
-            className="relative inline-flex items-center px-[3.6rem] py-[1.4rem] text-[1.55rem] font-bold font-inter text-[#050810] rounded-full bg-gradient-to-r from-cyan-400 to-purple-500 shadow-[0_0_25px_rgba(0,212,255,0.4)] overflow-hidden group"
+            whileHover={{ y: -3 }}
+            whileTap={{ scale: 0.98 }}
+            className="inline-flex items-center px-6 py-3 text-[1rem] font-semibold font-inter text-[#050810] rounded-md bg-cyan-400/95 shadow-sm transition-all duration-200"
           >
             <span className="relative z-10">Hire Me</span>
-            <span className="absolute inset-0 bg-white/0 group-hover:bg-white/10 transition-all duration-300 rounded-full" />
-            {/* shimmer */}
-            <span className="absolute top-0 left-0 w-1/2 h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 -translate-x-full group-hover:translate-x-[350%] transition-transform duration-700 ease-out" />
           </motion.a>
 
           <motion.a
             href={CV_URL}
             target="_blank"
             rel="noopener noreferrer"
-            whileHover={{ y: -4, backgroundColor: 'rgba(0,212,255,1)', color: '#050810', boxShadow: '0 0 30px rgba(0,212,255,0.5)' }}
-            whileTap={{ scale: 0.97 }}
-            className="inline-flex items-center px-[3.6rem] py-[1.4rem] text-[1.55rem] font-bold font-inter text-cyan-400 rounded-full border-2 border-cyan-400/50 bg-transparent backdrop-blur-sm transition-all duration-300"
+            whileHover={{ y: -3 }}
+            whileTap={{ scale: 0.98 }}
+            className="inline-flex items-center px-5 py-3 text-[0.98rem] font-semibold font-inter text-cyan-300 rounded-md border border-white/8 bg-transparent backdrop-blur-sm transition-all duration-200"
           >
             Download CV
           </motion.a>
@@ -139,26 +126,16 @@ export default function Hero() {
 
       {/* Profile Image */}
       <motion.div
-        initial={{ opacity: 0, scale: 0.6 }}
+        initial={{ opacity: 0, scale: 0.92 }}
         animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.9, delay: 0.8, ease: [0.34, 1.56, 0.64, 1] }}
+        transition={{ duration: 0.8, delay: 0.65 }}
         className="relative z-10 shrink-0 hidden md:block"
       >
-        {/* Outer glow ring */}
-        <div className="absolute inset-[-24px] rounded-full bg-gradient-to-br from-cyan-400/10 to-purple-500/10 blur-2xl animate-pulse-glow" />
-
-        {/* Rotating gradient ring */}
-        <div className="absolute inset-[-6px] rounded-full animate-orbit overflow-hidden">
-          <div className="w-full h-full rounded-full"
-            style={{ background: 'conic-gradient(from 0deg, #00d4ff 0deg, #7c6ef5 120deg, transparent 180deg, #00d4ff 360deg)', opacity: 0.7 }} />
-        </div>
-
-        {/* Profile image */}
-        <div className="animate-float w-[36vw] h-[36vw] max-w-[420px] max-h-[420px] xl:w-[420px] xl:h-[420px]">
+        <div className="w-[280px] h-[280px] md:w-[340px] md:h-[340px] lg:w-[380px] lg:h-[380px] rounded-full overflow-hidden border border-white/6 bg-[#0d1120]">
           <img
             src="/images/Profile-Picture.jpeg"
             alt="Tarun - Full Stack Developer"
-            className="w-full h-full object-cover rounded-full border-[4px] border-cyan-400/60 animate-pulse-glow bg-[#0d1120]"
+            className="w-full h-full object-cover rounded-full"
           />
         </div>
       </motion.div>
