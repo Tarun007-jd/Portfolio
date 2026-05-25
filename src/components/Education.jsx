@@ -6,6 +6,10 @@ const container = {
   hidden: {},
   show: { transition: { staggerChildren: 0.13 } },
 }
+const fadeUp = {
+  hidden: { opacity: 0, y: 28 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.4, 0, 0.2, 1] } },
+}
 const cardVariant = {
   hidden: { opacity: 0, x: -40 },
   show: { opacity: 1, x: 0, transition: { duration: 0.65, ease: [0.4, 0, 0.2, 1] } },
@@ -25,11 +29,11 @@ export default function Education() {
         animate={visible ? 'show' : 'hidden'}
         className="relative z-10 max-w-4xl mx-auto"
       >
-        <motion.h2 variants={item} className="text-3xl md:text-4xl font-outfit font-black mb-3 tracking-tight">
+        <motion.h2 variants={fadeUp} className="text-3xl md:text-4xl font-outfit font-black mb-3 tracking-tight">
           <span className="gradient-text-cyan">Education</span>
         </motion.h2>
 
-        <motion.p variants={item} className="text-base md:text-lg text-white/60 mb-12">
+        <motion.p variants={fadeUp} className="text-base md:text-lg text-white/60 mb-12">
           My academic journey and continuous learning path.
         </motion.p>
 
