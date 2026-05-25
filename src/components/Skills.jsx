@@ -19,7 +19,7 @@ export default function Skills() {
   const [ref, visible] = useReveal()
 
   return (
-    <section id="skills" className="relative px-6 lg:px-12 py-20 md:py-28 bg-[#0a0d1a]">
+    <section id="skills" className="relative px-6 lg:px-12 py-16 md:py-28 bg-[#0a0d1a]">
       <div className="section-divider" />
 
       <motion.div

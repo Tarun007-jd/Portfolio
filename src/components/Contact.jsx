@@ -41,7 +41,7 @@ export default function Contact() {
   }
 
   return (
-    <section id="contact" className="relative px-6 lg:px-12 py-20 md:py-28 bg-[#050810]">
+    <section id="contact" className="relative px-6 lg:px-12 py-16 md:py-28 bg-[#050810]">
       <div className="section-divider" />
 
       <motion.div

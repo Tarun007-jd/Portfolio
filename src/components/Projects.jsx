@@ -75,7 +75,7 @@ export default function Projects() {
   const otherProjects = projects.filter(p => !p.highlight)
 
   return (
-    <section id="projects" className="relative px-6 lg:px-12 py-20 md:py-28 bg-[#050810]">
+    <section id="projects" className="relative px-6 lg:px-12 py-16 md:py-28 bg-[#050810]">
       <div className="section-divider" />
 
       <motion.div

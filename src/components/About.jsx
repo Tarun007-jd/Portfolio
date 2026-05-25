@@ -15,7 +15,7 @@ export default function About() {
   const [ref, visible] = useReveal()
 
   return (
-    <section id="about" className="relative px-6 lg:px-12 py-20 md:py-28 bg-[#050810] overflow-hidden">
+    <section id="about" className="relative px-6 lg:px-12 py-16 md:py-28 bg-[#050810] overflow-hidden">
       {/* Divider */}
       <div className="section-divider" />
 

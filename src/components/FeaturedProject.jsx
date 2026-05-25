@@ -18,7 +18,7 @@ export default function FeaturedProject() {
   const featured = projects.find(p => p.highlight) || projects[0]
 
   return (
-    <section id="featured-project" className="relative px-6 lg:px-12 py-20 md:py-28 bg-[#0a0d1a] overflow-hidden">
+    <section id="featured-project" className="relative px-6 lg:px-12 py-16 md:py-28 bg-[#0a0d1a] overflow-hidden">
       <div className="section-divider" />
 
       {/* Ambient gradient */}

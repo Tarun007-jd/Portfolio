@@ -30,7 +30,7 @@ export default function Certificates() {
   }, [])
 
   return (
-    <section id="certificates" className="relative px-6 lg:px-12 py-20 md:py-28 bg-[#0a0d1a]">
+    <section id="certificates" className="relative px-6 lg:px-12 py-16 md:py-28 bg-[#0a0d1a]">
       <div className="section-divider" />
 
       <div ref={ref} className="relative z-10 max-w-6xl mx-auto">

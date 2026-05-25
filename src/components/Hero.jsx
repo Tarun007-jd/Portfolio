@@ -49,7 +49,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative px-6 lg:px-12 pt-32 pb-20 md:pt-40 md:pb-28 bg-[#050810] overflow-hidden"
+      className="relative px-6 lg:px-12 pt-24 pb-16 md:pt-40 md:pb-28 bg-[#050810] overflow-hidden"
     >
       <Starfield />
 
